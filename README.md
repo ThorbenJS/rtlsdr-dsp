@@ -1,4 +1,4 @@
-# DSP
+# rtlsdr-dsp
 
 This is a personal hobby project aimed at learning digital signal processing (DSP) with (and) C++.
 
