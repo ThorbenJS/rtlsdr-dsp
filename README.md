@@ -4,7 +4,7 @@ This is a personal hobby project aimed at learning digital signal processing (DS
 
 The usage of Claude in this project is intended to function mainly as a devops / guidance agent.
 My focus is to personally implement the DSP concepts and program logic myself so some learning 
-and actual conceptualization can actually happen.
+and conceptualization can actually happen.
 
 ## Hardware
 
