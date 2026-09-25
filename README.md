@@ -1,9 +1,10 @@
 # DSP
 
-Real-time radio signal processing in C++, built to learn DSP and modern C++
-together. The programs stream I/Q samples live from an RTL-SDR dongle and
-process them as they arrive, for example to show a spectrum, demodulate FM or
-decode data.
+This is a personal hobby project aimed at learning digital signal processing (DSP) with (and) C++.
+
+The usage of Claude in this project is intended to function mainly as a devops / guidance agent.
+My focus is to personally implement the DSP concepts and program logic myself so some learning 
+and actual conceptualization can actually happen.
 
 ## Hardware
 
