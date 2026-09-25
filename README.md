@@ -51,9 +51,6 @@ cmake --build --preset debug
 ./build/debug/apps/hello/hello
 ```
 
-**CLion:** open the folder, then under *Settings → Build, Execution,
-Deployment → CMake* enable the presets and disable the default profile.
-
 Sanitizer builds run several times slower. If a `debug` build drops samples at
 high sample rates, lower the rate or use `release`.
 
@@ -80,27 +77,7 @@ The build finds it automatically. Link `PkgConfig::FFTW` (single-precision
 
 ## Code style
 
-[Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html),
-enforced by `.clang-format` and `.clang-tidy`:
-
-- `CamelCase` types and functions, `snake_case` variables
-- `trailing_underscore_` private members, `kConstantName` constants
-- `.cc` / `.h` files
-
-```bash
-clang-format -i apps/<name>/*.cc apps/<name>/*.h
-clang-tidy -p build/debug apps/<name>/*.cc
-```
-
-## Roadmap
-
-1. Stream samples live, convert u8 I/Q to complex float, print power/RMS
-2. Live FFT spectrum in the terminal (windowing, dB scale)
-3. Frequency shifting with an NCO / complex mixer
-4. FIR low-pass filter design + decimation
-5. FM broadcast demodulation, played live through the Scarlett
-6. AM airband, then digital modes: ADS-B (1090 MHz), POCSAG, APRS
-7. Machine learning with PyTorch on live signals (e.g. modulation classification)
+[Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
 
 ## License
 
