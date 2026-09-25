@@ -8,9 +8,10 @@ and conceptualization can actually happen.
 
 ## Hardware
 
-- **Nooelec NESDR SMArt v5** (RTL2832U + R820T tuner), roughly 24 MHz – 1.7 GHz,
-  8-bit I/Q, up to ~2.4 MS/s
-- **Focusrite Scarlett 2i2** for live audio output
+| Device | Role | Key specs |
+|---|---|---|
+| [Nooelec NESDR SMArt v5](https://www.nooelec.com/store/sdr/sdr-receivers/nesdr-smart-sdr.html) | SDR receiver (USB) | RTL2832U + R820T2 tuner, ~25 MHz – 1.75 GHz (HF down to 100 kHz via direct sampling), 8-bit I/Q, up to ~2.4 MS/s stable |
+| [Focusrite Scarlett 2i2 (3rd Gen)](https://us.focusrite.com/products/scarlett-2i2-3rd-gen) | Audio interface (USB-C) | 2 in / 2 out, 24-bit / 192 kHz. Plays demodulated audio live |
 
 ## Setup (Ubuntu)
 

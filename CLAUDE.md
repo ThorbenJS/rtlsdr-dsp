@@ -37,8 +37,10 @@ FFTs, demodulators, mixers, decimators, sample-processing loops, and so on.
 
 ## Hardware
 - **Nooelec NESDR SMArt v5** (RTL-SDR): Realtek RTL2832U + **Rafael Micro
-  R820T** tuner (confirmed by `rtl_test`). USB ID `0bda:2838`. 29 gain steps,
-  0.0–49.6 dB.
+  R820T2** tuner (per Nooelec; librtlsdr and `rtl_test` report it as "R820T",
+  since both chips use the same driver). USB ID `0bda:2838`. 29 gain steps,
+  0.0–49.6 dB. HF below ~25 MHz only works in direct sampling mode
+  (`rtlsdr_set_direct_sampling`).
 - Streams 2.4 MS/s with no sample loss (`rtl_test -s 2400000`, 2026-09-25).
 - Rough capabilities: ~24 MHz – 1.7 GHz tuning range (tuner dependent), 8-bit
   I/Q samples, stable sample rates up to ~2.4 MS/s (max 3.2 MS/s).
