@@ -2,9 +2,6 @@
 
 This is a personal hobby project aimed at learning digital signal processing (DSP) with (and) C++.
 
-The usage of Claude in this project is intended to function mainly as a devops / project organization / guidance agent.
-My focus is to personally implement the DSP concepts and program logic myself so some learning 
-and conceptualization can actually happen.
 
 ## Hardware
 
@@ -12,6 +9,11 @@ and conceptualization can actually happen.
 |---|---|---|
 | [Nooelec NESDR SMArt v5](https://www.nooelec.com/store/sdr/sdr-receivers/nesdr-smart-sdr.html) | SDR receiver (USB) | RTL2832U + R820T2 tuner, ~25 MHz – 1.75 GHz (HF down to 100 kHz via direct sampling), 8-bit I/Q, up to ~2.4 MS/s stable |
 | [Focusrite Scarlett 2i2 (3rd Gen)](https://us.focusrite.com/products/scarlett-2i2-3rd-gen) | Audio interface (USB-C) | 2 in / 2 out, 24-bit / 192 kHz. Plays demodulated audio live |
+
+
+## Resources
+
+
 
 ## Setup (Ubuntu)
 
@@ -78,6 +80,22 @@ The build finds it automatically. Link `PkgConfig::FFTW` (single-precision
 ## Code style
 
 [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
+
+
+## Use of AI
+
+In this project the intention is to limit AI use to an project organization and guidance capacity.
+Although AI is definetely capable enough of implementing most of the concepts of this project well enough, I intend to
+implement DSP concepts and program logic personally. This allows me to learn and work through solutions and 
+implementations on my own, build understanding and conceptualization around the topics and concepts of DSP and C++.
+
+In an organizational capacity AI is used to create and maintain this project folder and file structure, as well as 
+actively building and updating this README.md file according to how the project changes. I use AI to also keep track of and
+update/set up libraries and packages necessary for this project.
+
+AI is also great in a learning capacity alongside traditional resources that I will be using in this project like
+textbooks, articles and tutorials.
+
 
 ## License
 
