@@ -68,6 +68,11 @@ notes/               user's study notes (Markdown + LaTeX math), one file per to
 ```
 - `notes/` is the user's own writing. Don't fill it with explanations unless
   asked. Keep it free of long verbatim book quotes (the repo is public).
+- When the user posts an image of an equation (e.g. from a book), transcribe
+  it to Markdown + LaTeX and add it to the relevant notes file: a `##`
+  heading, the equation in a `$$` block, a one-line definition of the
+  symbols (paraphrased, not the book's caption), and a short citation like
+  `*Source: Smith, ch. 2, eq. 2-1.*`. Leave the explanation to the user.
 - Add a shared library dir (e.g. `lib/`) once code is actually reused
   between apps. Don't create it before then.
 - New app: create `apps/<name>/CMakeLists.txt` with `add_executable` and
