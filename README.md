@@ -66,6 +66,7 @@ CMakeLists.txt       shared settings: C++20, warnings, sanitizers, librtlsdr/FFT
 CMakePresets.json    build presets
 apps/<name>/         one program per folder, sources directly inside
 lib/                 (later) code shared between programs
+notes/               study notes: DSP and C++ explanations, equations, snippets
 ```
 
 ### Adding a program

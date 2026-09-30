@@ -64,7 +64,10 @@ CMakeLists.txt       root: C++20, warnings, sanitizer option, finds librtlsdr/FF
 CMakePresets.json    debug (clang+ASan/UBSan), release (RelWithDebInfo), gcc-debug
 apps/<name>/         one executable each; auto-added if it has a CMakeLists.txt
 apps/hello/          toolchain smoke test, delete when real apps exist
+notes/               user's study notes (Markdown + LaTeX math), one file per topic
 ```
+- `notes/` is the user's own writing. Don't fill it with explanations unless
+  asked. Keep it free of long verbatim book quotes (the repo is public).
 - Add a shared library dir (e.g. `lib/`) once code is actually reused
   between apps. Don't create it before then.
 - New app: create `apps/<name>/CMakeLists.txt` with `add_executable` and
