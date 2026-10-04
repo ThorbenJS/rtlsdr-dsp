@@ -8,7 +8,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 option(DSP_SANITIZE "Build with AddressSanitizer and UndefinedBehaviorSanitizer" OFF)
 
-# Common compile settings, linked into every target.
+# Common compile settings.
 add_library(dsp_options INTERFACE)
 target_compile_options(dsp_options INTERFACE -Wall -Wextra -Wpedantic -Wshadow)
 if(DSP_SANITIZE)
@@ -17,9 +17,9 @@ if(DSP_SANITIZE)
   target_link_options(dsp_options INTERFACE -fsanitize=address,undefined)
 endif()
 
-# Optional third-party libraries. Link with PkgConfig::RTLSDR / PkgConfig::FFTW.
+# Third-party libraries. Link with PkgConfig::RTLSDR / PkgConfig::FFTW.
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(RTLSDR IMPORTED_TARGET librtlsdr)
+pkg_check_modules(RTLSDR REQUIRED IMPORTED_TARGET librtlsdr)
 pkg_check_modules(FFTW IMPORTED_TARGET fftw3f)
 
-add_subdirectory(apps)
+add_subdirectory(src)

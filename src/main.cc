@@ -34,4 +34,6 @@ int main() {
   const std::unique_ptr<rtlsdr_dev_t, DeviceCloser> dongle(dev);
   auto sample_rate = rtlsdr_get_sample_rate(dongle.get());
   std::cout << "Current sample rate of device: " << sample_rate << std::endl;
+  auto center_freq = rtlsdr_get_center_freq(dongle.get());
+  std::cout << "Current center frequency of device: " << center_freq << std::endl;
 }

@@ -55,7 +55,7 @@ The build setup is in `CMakePresets.json`:
 ```bash
 cmake --preset debug
 cmake --build --preset debug
-./build/debug/apps/hello/hello
+./build/debug/dsp
 ```
 
 Sanitizer builds run several times slower. If a `debug` build drops samples at
@@ -63,25 +63,33 @@ high sample rates, lower the rate or use `release`.
 
 ## Layout
 
+The project builds a single program, `dsp`. Each feature is added to it as its
+own pair of source files.
+
 ```
 CMakeLists.txt       shared settings: C++20, warnings, sanitizers, librtlsdr/FFTW
 CMakePresets.json    build presets
-apps/<name>/         one program per folder, sources directly inside
-lib/                 (later) code shared between programs
+src/CMakeLists.txt   the `dsp` program and its list of source files
+src/main.cc          entry point
+src/<feature>.cc/.h  one pair per feature
 notes/               study notes: DSP and C++ explanations, equations, snippets
 ```
 
-### Adding a program
+### Adding a source file
 
-Create `apps/<name>/` with your sources and a `CMakeLists.txt`:
+Create `src/<feature>.cc` and `src/<feature>.h`, then add the `.cc` to the list
+in `src/CMakeLists.txt`:
 
 ```cmake
-add_executable(<name> main.cc)
-target_link_libraries(<name> PRIVATE dsp_options PkgConfig::RTLSDR)
+add_executable(dsp
+  main.cc
+  device.cc
+  <feature>.cc)
 ```
 
-The build finds it automatically. Link `PkgConfig::FFTW` (single-precision
-`fftw3f`) if the program needs FFTs.
+Headers are included by their path from the repo root, for example
+`#include "src/device.h"`. Add `PkgConfig::FFTW` (single-precision `fftw3f`) to
+`target_link_libraries` once the code needs FFTs.
 
 ## Code style
 

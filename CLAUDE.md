@@ -58,12 +58,15 @@ FFTs, demodulators, mixers, decimators, sample-processing loops, and so on.
   (absolute paths, usernames, emails, device serials) out of tracked files.
 
 ## Project layout
-One CMake project at the root, with one subdirectory per program:
+One CMake project that builds **one executable, `dsp`**. Each feature
+(device handling, power, spectrum, demodulation, ...) is added to that program
+as its own `.cc` / `.h` pair. Don't create separate programs per topic.
 ```
 CMakeLists.txt       root: C++20, warnings, sanitizer option, finds librtlsdr/FFTW
 CMakePresets.json    debug (clang+ASan/UBSan), release (RelWithDebInfo), gcc-debug
-apps/<name>/         one executable each; auto-added if it has a CMakeLists.txt
-apps/hello/          toolchain smoke test, delete when real apps exist
+src/CMakeLists.txt   the `dsp` target and its list of source files
+src/main.cc          entry point
+src/<feature>.cc/.h  one pair per feature
 notes/               user's study notes (Markdown + LaTeX math), one file per topic
 ```
 - `notes/` is the user's own writing. Don't fill it with explanations unless
@@ -73,13 +76,13 @@ notes/               user's study notes (Markdown + LaTeX math), one file per to
   heading, the equation in a `$$` block, a one-line definition of the
   symbols (paraphrased, not the book's caption), and a short citation like
   `*Source: Smith, ch. 2, eq. 2-1.*`. Leave the explanation to the user.
-- Add a shared library dir (e.g. `lib/`) once code is actually reused
-  between apps. Don't create it before then.
-- New app: create `apps/<name>/CMakeLists.txt` with `add_executable` and
-  `target_link_libraries(<name> PRIVATE dsp_options ...)`, adding
-  `PkgConfig::RTLSDR` / `PkgConfig::FFTW` (single-precision `fftw3f`) as needed.
+- New source file: add the `.cc` to the `add_executable(dsp ...)` list in
+  `src/CMakeLists.txt`. Headers are included by their path from the repo root
+  (`#include "src/device.h"`).
+- `dsp` links `PkgConfig::RTLSDR`. Add `PkgConfig::FFTW` (single-precision
+  `fftw3f`) to `target_link_libraries` once the code needs FFTs.
 - CLI builds: `cmake --preset debug && cmake --build --preset debug`
-  (output goes to `build/<preset>/`)
+  (the binary is `build/<preset>/dsp`)
 
 ## Code style: Google C++ Style Guide
 - `.clang-format`: `BasedOnStyle: Google`
