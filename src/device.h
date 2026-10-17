@@ -2,9 +2,16 @@
 #define DSP_SRC_DEVICE_H_
 
 #include <rtl-sdr.h>
+
+#include <array>
 #include <memory>
 #include <string>
 
+struct DeviceCloser {
+  void operator()(rtlsdr_dev_t* device) {
+    rtlsdr_close(device);
+  }
+};
 
 // This is a wrapper class for wrapping the functionalities of the
 // rtlsdr C library under a single Device object.
@@ -12,11 +19,9 @@ class Device {
 public:
   explicit Device(uint32_t device_index);
 
-  ~Device();
+  int Open();
 
-  void Open();
-
-  void Close() const;
+  [[nodiscard]] int Close() const;
 
   [[nodiscard]] int SetCenterFreq(uint32_t freq) const;
 
@@ -40,11 +45,11 @@ public:
 
   [[nodiscard]] int SetSampleRate(uint32_t rate) const;
 
-  int SetTestmode(bool on);
+  [[nodiscard]] int SetTestmode(bool on) const;
 
-  int SetAGCmode(bool on);
+  [[nodiscard]] int SetAGCmode(bool on) const;
 
-  int SetDirectSampling(int mode);
+  [[nodiscard]] int SetDirectSampling(int mode) const ;
 
   [[nodiscard]] int GetDirectSampling() const;
 
@@ -63,22 +68,20 @@ public:
 
   [[nodiscard]] int SetBiasTee(int on) const;
 
-  int SetBiasTeeGPIO(int gpio, int on);
+  int SetBiasTeeGPIO(int gpio, int on) const;
+
+  [[nodiscard]] std::string GetManufacturer() const;
+
+  [[nodiscard]] std::string GetProduct() const;
+
+  [[nodiscard]] std::string GetSerial() const;
 
 private:
-  rtlsdr_dev_t* dev_ = nullptr;
+  std::unique_ptr<rtlsdr_dev_t, DeviceCloser> dev_;
   uint32_t index_;
-  std::string manufacturer_;
-  std::string product_;
-  std::string serial_;
-  bool test_mode_;
-  bool agc_mode_;
-  int direct_sampling_mode_;
-  bool fail_state_ = false;
-
-
-
-
+  std::array<char, 256> manufacturer_;
+  std::array<char, 256> product_;
+  std::array<char, 256> serial_;
 };
 
 #endif  // DSP_SRC_DEVICE_H_
