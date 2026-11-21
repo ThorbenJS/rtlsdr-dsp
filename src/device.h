@@ -68,7 +68,7 @@ public:
 
   [[nodiscard]] int SetBiasTee(int on) const;
 
-  int SetBiasTeeGPIO(int gpio, int on) const;
+  [[nodiscard]] int SetBiasTeeGPIO(int gpio, int on) const;
 
   [[nodiscard]] std::string GetManufacturer() const;
 

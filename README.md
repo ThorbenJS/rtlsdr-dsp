@@ -99,7 +99,7 @@ Headers are included by their path from the repo root, for example
 ## Use of AI
 
 In this project the intention is to limit AI use to an project organization and guidance capacity.
-Although AI is definetely capable enough of implementing most of the concepts of this project well enough, I intend to
+Although AI is definetely capable enough of implementing most (probably all) of the concepts of this project well enough, I intend to
 implement DSP concepts and program logic personally. This allows me to learn and work through solutions and 
 implementations on my own, build understanding and conceptualization around the topics and concepts of DSP and C++.
 
