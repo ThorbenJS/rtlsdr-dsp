@@ -14,7 +14,8 @@ int SampleStream::Start() {
 int SampleStream::Stop() const { return device_.CancelAsync(); }
 
 void SampleStream::PrintSamples(const std::vector<uint8_t>& samples) {
-
+  std::cout << samples.size() << '\n';
+  std::cout.flush();
 }
 
 void SampleStream::OnSample(unsigned char* buf, uint32_t len, void* ctx) {
