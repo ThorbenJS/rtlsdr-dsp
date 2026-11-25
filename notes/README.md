@@ -4,7 +4,6 @@ General useful notes for the project from books and online source etc.
 
 ## Topics
 
-- [Generally useful equations](equations.md)
 
 ## References
 
