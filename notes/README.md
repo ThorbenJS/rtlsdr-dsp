@@ -2,7 +2,10 @@
 
 General useful notes for the project from books and online source etc.
 
+
 ## Topics
+
+Handwritten originals: [handwritten-notes.pdf](handwritten-notes.pdf) (all three pages), or individual images in [scans/](scans/).
 
 
 ## References

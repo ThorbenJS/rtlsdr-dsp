@@ -7,7 +7,7 @@
 
 class SampleRadio {
 public:
-  SampleRadio()
+  SampleRadio();
 };
 
 #endif  // DSP_SAMPLE_RADIO_H
